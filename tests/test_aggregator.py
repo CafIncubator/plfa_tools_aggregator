@@ -4,14 +4,6 @@ import pandas as pd
 from plfatools.aggregator import Aggregator
 
 class Test_Aggregator(unittest.TestCase):
-    #def setup(self):
-        #self.sut = Aggregator()
-
-    def test_transform_raw_to_stacked_returns_dataframe(self):
-        # Arrange, Act, Assert
-        Sample = pd.read_excel('AlteredDataFrame.xlsx', 'raw', header = None)
-        self.assertIsInstance(
-            Aggregator().transform_raw_to_stacked(Sample), pd.DataFrame)
     
     def test_transform_raw_to_stacked_returns_expected_format(self):
         # Arrange
