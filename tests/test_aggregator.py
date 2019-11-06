@@ -5,12 +5,13 @@ from plfatools.aggregator import Aggregator
 
 class Test_Aggregator(unittest.TestCase):
     #def setup(self):
-    #    self.sut = Aggregator()
+        #self.sut = Aggregator()
 
     def test_transform_raw_to_stacked_returns_dataframe(self):
         # Arrange, Act, Assert
+        Sample = pd.read_excel('AlteredDataFrame.xlsx', 'raw', header = None)
         self.assertIsInstance(
-            Aggregator.transform_raw_to_stacked(""), pd.DataFrame)
+            Aggregator().transform_raw_to_stacked(Sample), pd.DataFrame)
     
     def test_transform_raw_to_stacked_returns_expected_format(self):
         # Arrange
@@ -19,7 +20,7 @@ class Test_Aggregator(unittest.TestCase):
         expected = formatted_xlsx.parse("stacked")
         
         # Act
-        actual = Aggregator.transform_raw_to_stacked(formatted_xlsx.parse("raw"))
+        actual = Aggregator().transform_raw_to_stacked(formatted_xlsx.parse("raw"))
 
         # Assert
         # Check for same number of columns and same names
