@@ -10,28 +10,43 @@ import pandas as pd
 class Aggregator():
    
     def transform_raw_to_stacked(self, plfa_tools_output: pd.DataFrame) -> pd.DataFrame:
+        """Reformats output from PLFA Tools, of a single sample, into proper tabular format
+        plfa_tools_output = Output from PLFA Tools of a single worksheet in the form of a Pandas DataFrame
+        
+        Header names: SampleId, GCRunId, GCFileLoc, ProcessingCode, ProcessMethod, RunDateTime, RT, Response, Ar/Ht, RFact, ECL, Peak Name, Percent, Comment1, Comment2
+        """
+
+        # Read in disjunct values
         SampleId = plfa_tools_output.iloc[2,2]
         GCRunId = plfa_tools_output.iloc[2,1]
         GCFileLoc = plfa_tools_output.iloc[0, 6]
         ProcessingCode = plfa_tools_output.iloc[0,7]
         ProcessingMethod = plfa_tools_output.iloc[3,6]
         RunDateTime = plfa_tools_output.iloc[3,7]
-        plfa_tools_output.drop(plfa_tools_output.head(5).index, inplace = True)
-        plfa_tools_output.drop(plfa_tools_output.tail(5).index,inplace=True)
-        plfa_tools_output['SampleID'] = SampleId
-        plfa_tools_output['GCRunID'] = GCRunId
-        plfa_tools_output['GCFileLoc'] = GCFileLoc
-        plfa_tools_output['ProcessingCode'] = ProcessingCode
-        plfa_tools_output['ProcessingMethod'] = ProcessingMethod
-        plfa_tools_output['RunDateTime'] = RunDateTime
-        print(plfa_tools_output)
-        return plfa_tools_output
-
-        """Reformats output from PLFA Tools, of a single sample, into proper tabular format
-        plfa_tools_output = Output from PLFA Tools of a single worksheet in the form of a Pandas DataFrame
         
-        Header names: SampleId, GCRunId, GCFileLoc, ProcessingCode, ProcessMethod, RunDateTime, RT, Response, Ar/Ht, RFact, ECL, Peak Name, Percent, Comment1, Comment2
-        """
+        # Copy input df, extract out table of results, set headers
+        result = pd.DataFrame(plfa_tools_output)
+        result.drop(result.head(5).index, inplace = True)
+        result.drop(result.tail(5).index, inplace = True)
+        result.columns = result.iloc[0]
+        result = result[1:]
+        
+        # Create columns for disjunct values
+        result.insert(0, 'RunDateTime', RunDateTime)
+        result.insert(0, 'ProcessingMethod', ProcessingMethod)
+        result.insert(0, 'ProcessingCode', ProcessingCode)
+        result.insert(0, 'GCFileLoc', GCFileLoc)
+        result.insert(0, 'GCRunID', GCRunId)
+        result.insert(0, 'SampleID', SampleId)
+
+        #result['SampleID'] = SampleId
+        #result['GCRunID'] = GCRunId
+        #result['GCFileLoc'] = GCFileLoc
+        #result['ProcessingCode'] = ProcessingCode
+        #result['ProcessingMethod'] = ProcessingMethod
+        #result['RunDateTime'] = RunDateTime
+
+        return result
         
     def read_file(self, file_path: pathlib.Path) -> pd.DataFrame:
         """Reads a file from PLFA Tools and returns a pandas DataFrame with all data from all worksheets
