@@ -40,13 +40,6 @@ class Aggregator():
         result.insert(0, 'GCRunID', GCRunId)
         result.insert(0, 'SampleID', SampleId)
 
-        #result['SampleID'] = SampleId
-        #result['GCRunID'] = GCRunId
-        #result['GCFileLoc'] = GCFileLoc
-        #result['ProcessingCode'] = ProcessingCode
-        #result['ProcessingMethod'] = ProcessingMethod
-        #result['RunDateTime'] = RunDateTime
-
         return result
         
     def read_file(self, file_path: pathlib.Path) -> pd.DataFrame:
