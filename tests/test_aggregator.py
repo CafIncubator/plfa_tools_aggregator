@@ -38,5 +38,11 @@ class Test_Aggregator(unittest.TestCase):
         self.assertEqual(len(expected.columns), len(actual.columns))
         self.assertEqual(len(expected.columns.difference(actual.columns)),0)
 
+
+    def test_read_file_returns_expected_result(self):
+        path_to_formatted_xlsx = pathlib.Path.cwd() / "tests" / "assets" /  "PlfaToolAggregator_exampleActualData.xlsx"
+        Aggregator().read_file(path_to_formatted_xlsx)
+
+
 if __name__ == "__main__":
     unittest.main()
