@@ -41,7 +41,14 @@ class Test_Aggregator(unittest.TestCase):
 
     def test_read_file_returns_expected_result(self):
         path_to_formatted_xlsx = pathlib.Path.cwd() / "tests" / "assets" /  "PlfaToolAggregator_exampleActualData.xlsx"
-        Aggregator().read_file(path_to_formatted_xlsx)
+        
+        actual = Aggregator().read_file(path_to_formatted_xlsx)
+
+        # Assert
+        self.assertEqual(4, len(actual))
+        self.assertEqual(16, len(actual.columns))
+        self.assertEqual(47283.86, round(actual.at[3,"General FAME"], 2))
+        
 
 
 if __name__ == "__main__":

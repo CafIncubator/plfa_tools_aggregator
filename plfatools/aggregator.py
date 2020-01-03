@@ -53,13 +53,13 @@ class Aggregator():
 
         for name, sheet in sheets_dict.items():
             if num != 0:
-                expected = formatted_xlsx.parse(str(name))
+                expected = formatted_xlsx.parse(str(name), header=None)
                 stacked_df = self.transform_raw_to_stacked(expected)
                 tidy = self.tidy(stacked_df)
                 if num == 1:
                     master = tidy
                 else:
-                    master.append(tidy)
+                    master = master.append(tidy)
 
             num += 1
         return master
