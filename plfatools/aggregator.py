@@ -106,6 +106,10 @@ class Aggregator():
         
         # Merge and return value
         tidy = pd.merge(meta_df, pivot_peaks, on = 'SampleID')
+
+        # Order columns, for humans
+        cols = ['SampleID', 'GCRunID', 'GCFileLoc', 'ProcessingCode', 'ProcessingMethod', 'RunDateTime', 'General FAME', 'AM Fungi', 'Gram Negative', 'Eukaryote', 'Fungi', 'Gram Positive', 'Anaerobe', 'Methanotroph', 'Actinomycetes', 'Protozoa']
+        tidy = tidy[cols]
         
         return tidy
  

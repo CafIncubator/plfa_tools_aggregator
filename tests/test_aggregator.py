@@ -47,7 +47,7 @@ class Test_Aggregator(unittest.TestCase):
         # Assert
         self.assertEqual(4, len(actual))
         self.assertEqual(16, len(actual.columns))
-        self.assertEqual(47283.86, round(actual.at[3,"General FAME"], 2))
+        self.assertEqual(47283.86, round(actual["General FAME"].values[3], 2))
         
 
 
