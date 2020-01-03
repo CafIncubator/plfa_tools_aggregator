@@ -86,9 +86,11 @@ class Aggregator():
         file_path = pathlib Path to a xlsx file as produced by PLFA Tools
         """
         
+        # Read file
         xlsx = pd.ExcelFile(str(file_path))
         sheets_dict = pd.read_excel(file_path, sheet_name=None)
 
+        # Loop through worksheets, transform raw to tidy, merge transformed sheets to single dataframe
         sheet_num = 0
         for name, sheet in sheets_dict.items():
             # Skip the first sheet, it holds metadata we're not interested in
@@ -96,6 +98,7 @@ class Aggregator():
                 raw = xlsx.parse(str(name), header=None)
                 stacked = self.transform_raw_to_stacked(raw)
                 tidy = self.transform_stacked_to_tidy(stacked)
+            
                 if sheet_num == 1:
                     master = tidy
                 else:
