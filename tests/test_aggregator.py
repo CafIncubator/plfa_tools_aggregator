@@ -29,7 +29,7 @@ class Test_Aggregator(unittest.TestCase):
         formatted_xlsx = pd.ExcelFile(str(path_to_formatted_xlsx))
         expected = formatted_xlsx.parse("tidy")
 
-        actual = Aggregator().tidy(
+        actual = Aggregator().transform_stacked_to_tidy(
             formatted_xlsx.parse(sheet_name="stacked"))
 
         # Assert
@@ -48,8 +48,6 @@ class Test_Aggregator(unittest.TestCase):
         self.assertEqual(4, len(actual))
         self.assertEqual(16, len(actual.columns))
         self.assertEqual(47283.86, round(actual["General FAME"].values[3], 2))
-        
-
 
 if __name__ == "__main__":
     unittest.main()
