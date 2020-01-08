@@ -29,7 +29,7 @@ class Test_Aggregator(unittest.TestCase):
         formatted_xlsx = pd.ExcelFile(str(path_to_formatted_xlsx))
         expected = formatted_xlsx.parse("tidy")
 
-        actual = Aggregator().tidy(
+        actual = Aggregator().transform_stacked_to_tidy(
             formatted_xlsx.parse(sheet_name="stacked"))
 
         # Assert
@@ -37,6 +37,17 @@ class Test_Aggregator(unittest.TestCase):
         self.assertIsInstance(actual, pd.DataFrame)
         self.assertEqual(len(expected.columns), len(actual.columns))
         self.assertEqual(len(expected.columns.difference(actual.columns)),0)
+
+
+    def test_read_file_returns_expected_result(self):
+        path_to_formatted_xlsx = pathlib.Path.cwd() / "tests" / "assets" /  "PlfaToolAggregator_exampleActualData.xlsx"
+        
+        actual = Aggregator().read_file(path_to_formatted_xlsx)
+
+        # Assert
+        self.assertEqual(4, len(actual))
+        self.assertEqual(16, len(actual.columns))
+        self.assertEqual(47283.86, round(actual["General FAME"].values[3], 2))
 
 if __name__ == "__main__":
     unittest.main()
