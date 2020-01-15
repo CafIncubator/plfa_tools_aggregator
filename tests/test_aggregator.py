@@ -49,5 +49,17 @@ class Test_Aggregator(unittest.TestCase):
         self.assertEqual(16, len(actual.columns))
         self.assertEqual(47283.86, round(actual["General FAME"].values[3], 2))
 
+
+    def test_read_dir_returns_expected_result(self):
+        path_to_directory = pathlib.Path.cwd() / "tests" / "assets" / "read_dir"
+
+        actual = Aggregator().read_dir(path_to_directory)
+
+        # Assert
+        self.assertEqual(8, len(actual))
+        self.assertEqual(16, len(actual.columns))
+        self.assertEqual(47283.86, round(actual["General FAME"].values[3], 2))
+
+
 if __name__ == "__main__":
     unittest.main()
