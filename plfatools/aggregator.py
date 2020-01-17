@@ -112,5 +112,27 @@ class Aggregator():
         """Reads a directory path that contains multiple files from PLFA Tools and returns a pandas DataFrame with all data from all files and worksheets
         dir_path = pathlib Path to directory containing one or more xlsx files as produced by PLFA Tools
         """
+        # Integer for keeping track of what file the loop is on
+        fileNum = 0
+
+        for filename in os.listdir(dir_path):
+            if filename.endswith('.xlsx'):
+                if fileNum != 0:
+                    # Turn the directory to file path
+                    path_to_directory = pathlib.Path.cwd() / str(dir_path) / str(filename)
+                    # Send file path to be aggregated
+                    tidy = self.read_file(path_to_directory)
+                    # Append it to what has already been aggregated so far
+                    master = master.append(tidy)
+                else:
+                    # Conditional so the first file will go directly into the master dataframe
+
+                    # Turn the directory into a file path
+                    path_to_directory = pathlib.Path.cwd() / str(dir_path) / str(filename)
+                    # Send path directory to be aggregated
+                    master = self.read_file(path_to_directory)
+            fileNum += 1    
+        
+        return master
 
 #%%
