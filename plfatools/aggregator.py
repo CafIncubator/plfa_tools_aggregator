@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-#%%
-"""
-
-"""
 import os
 import pathlib
 import pandas as pd
@@ -135,4 +131,3 @@ class Aggregator():
         
         return master
 
-#%%
