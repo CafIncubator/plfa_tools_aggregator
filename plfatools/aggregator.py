@@ -115,18 +115,18 @@ class Aggregator():
             if filename.endswith('.xlsx'):
                 if fileNum != 0:
                     # Turn the directory to file path
-                    path_to_directory = pathlib.Path.cwd() / str(dir_path) / str(filename)
+                    path_to_file = dir_path / str (filename)
                     # Send file path to be aggregated
-                    tidy = self.read_file(path_to_directory)
+                    tidy = self.read_file(path_to_file)
                     # Append it to what has already been aggregated so far
                     master = master.append(tidy)
                 else:
                     # Conditional so the first file will go directly into the master dataframe
 
                     # Turn the directory into a file path
-                    path_to_directory = pathlib.Path.cwd() / str(dir_path) / str(filename)
+                    path_to_file = dir_path / str (filename)
                     # Send path directory to be aggregated
-                    master = self.read_file(path_to_directory)
+                    master = self.read_file(path_to_file)
             fileNum += 1    
         
         return master
