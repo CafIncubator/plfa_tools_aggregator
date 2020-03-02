@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
 import pathlib
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 
 class Aggregator():
     """Automate the aggregation of GC results from PLFA and NLFA samples into a single csv file for analysis.
