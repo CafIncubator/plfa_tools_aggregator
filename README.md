@@ -23,5 +23,5 @@ Must be using python 3.0.0 or later to use this package.
 ## Using this package
 Can use via the command line by running the main file within the aggregator package. It takes two arguments: The first being the file directory to the files to be 
 aggregated and the second being where you want the final.xlsx file to be outputted.
-**Note** __strong__ : If there are other .xlsx files in the directory to be aggregated this will cause errors as the main file assumes all the excel files in the directory are GC results. 
+**Note**: If there are other .xlsx files in the directory to be aggregated this will cause errors as the main file assumes all the excel files in the directory are GC results. 
 
