@@ -21,7 +21,25 @@ Can be installed using pip install.
 Must be using python 3.0.0 or later to use this package.
 
 ## Using this package
+Can be installed using pip install plfatools
+
 Can use via the command line by running the main file within the aggregator package. It takes two arguments: The first being the file directory to the files to be 
 aggregated and the second being where you want the final.xlsx file to be outputted.
+
+Can also be imported as a module using from plfatools.aggregator import Aggregator
+
+Aggregator Class contains four functons: transform_raw_to_stacked, transform_stacked_to_tidy, read_file, and read_dir.
+
 **Note**: If there are other .xlsx files in the directory to be aggregated this will cause errors as the main file assumes all the excel files in the directory are GC results. 
+
+## Example Code
+
+(directory where __main__.py is intalled) python __main__.py (directory where gc excel files are) (directory where you want the final.xlsx file to be outputted)
+
+
+final_data = Aggregator().read_dir(path_to_directory) where actual will be a pd.DataFrame and path_to_directory is the path to the gc excel files.
+
+tidy_dataframe = Aggregator().raw_to_stacked (rawDataFrame)
+
+
 
