@@ -70,7 +70,7 @@ path_to_directory = pathlib.Path('C:\\Files\\Experiment1\\PlfaOutput')
 plfa_data = aggregator.read_dir(path_to_directory)
 
 # alternatively, read a single file and assign the formatted output to Pandas DataFrame
-path_to_file = 'C:\Files\Experiment1\PlfaOutput\gc-output.xlsx'
+path_to_file = path_to_directory / 'gc-output.xlsx'
 plfa_data = aggregator.read_file(path_to_file)
 
 ```
