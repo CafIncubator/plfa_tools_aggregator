@@ -10,12 +10,6 @@ As a work of the United States government, this project is in the public domain 
 
 Additionally, we waive copyright and related rights in the work worldwide through the CC0 1.0 Universal public domain dedication.
 
-## Contents
-
-Files for plfatools, version 0.1.0:
-
-* plfatools-0.1.0.tar.gz : Contains the entire PLFA Tools Aggregator package including aggregator class and tests.
-
 ## Installation information
 
 Can be installed using pip:
