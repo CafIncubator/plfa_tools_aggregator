@@ -46,7 +46,7 @@ The ```Aggregator``` Class contains four functions, listed below in order to dec
 ### From command line
 
 ```cmd
-> python plfatools "C:\Files\Experiment1\PlfaOutput" "C:\Files\Experiment1\Output"
+> python -m plfatools "C:\Files\Experiment1\PlfaOutput" "C:\Files\Experiment1\Output"
 ```
 
 Where:
@@ -57,14 +57,14 @@ Where:
 ### From Python
 
 ```python
-# using pip install plfatools then import
+import pathlib
 import plfatools
 
 # create an aggregator object
 aggregator = plfatools.Aggregator()
 
 # specify path to directory with PLFA Tools output (Windows paths)
-path_to_directory = 'C:\Files\Experiment1\PlfaOutput'
+path_to_directory = pathlib.Path('C:\\Files\\Experiment1\\PlfaOutput')
 
 # aggregate and format instrument output and assign it to a Pandas DataFrame
 plfa_data = aggregator.read_dir(path_to_directory)
