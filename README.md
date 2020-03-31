@@ -26,13 +26,15 @@ Must be using Python 3 or later to use this package.
 
 ## Using this package
 
-Can be installed using: ```pip install plfatools```
+### From command line
 
-Can use via the command line by running the main file within the aggregator package. It takes two arguments: The first being the file directory to the files to be aggregated and the second being where you want the final.csv file to be outputted.
+PlfaTools can be used via the command line by running the main file within the aggregator package. It takes two arguments: 1) a full path to the directory containing the files to be aggregated and 2) a full path to the directory where you want the final.csv file to be written.
 
-Can also be imported as a module: ```import plfatools```
+### From Python
 
-The ```Aggregator``` Class contains four functions, listed below in order to decreasing generality:
+PlfaTools can also be imported as a module: ```import plfatools```
+
+The ```Aggregator``` Class contains four functions, listed below in order of decreasing generality:
 
 * ```read_dir()``` : Reads a directory path that contains multiple files from PLFA Tools and returns a pandas DataFrame with all data from all files and worksheets
 * ```read_file()``` : Reads a file from PLFA Tools and returns a pandas DataFrame with all data from all worksheets
