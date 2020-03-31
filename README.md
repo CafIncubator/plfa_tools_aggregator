@@ -30,6 +30,17 @@ Must be using Python 3 or later to use this package.
 
 PlfaTools can be used via the command line by running the main file within the aggregator package. It takes two arguments: 1) a full path to the directory containing the files to be aggregated and 2) a full path to the directory where you want the final.csv file to be written.
 
+Example:
+
+```cmd
+> python -m plfatools "C:\Files\Experiment1\PlfaOutput" "C:\Files\Experiment1\Output"
+```
+
+Where:
+
+* ```"C:\Files\Experiment1\PlfaOutput"``` is the directory with xlsx files to be aggregated
+* ```"C:\Files\Experiment1\Output"``` is the directory where "final.csv" file containing aggregated data is written
+
 ### From Python
 
 PlfaTools can also be imported as a module: ```import plfatools```
@@ -43,20 +54,7 @@ The ```Aggregator``` Class contains four functions, listed below in order of dec
 
 **Note**: If there are other .xlsx files in the directory to be aggregated this will cause errors as the main file assumes all the XLSX files in the directory are GC results.
 
-## Example Code
-
-### From command line
-
-```cmd
-> python -m plfatools "C:\Files\Experiment1\PlfaOutput" "C:\Files\Experiment1\Output"
-```
-
-Where:
-
-* ```"C:\Files\Experiment1\PlfaOutput"``` is the directory with xlsx files to be aggregated
-* ```"C:\Files\Experiment1\Output"``` is the directory where "final.csv" file containing aggregated data is written
-
-### From Python
+Example:
 
 ```python
 import pathlib
